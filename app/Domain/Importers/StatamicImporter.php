@@ -16,10 +16,10 @@ class StatamicImporter
      * linked folder that Pages puts them in
      * /public/storage/
      */
-    public function handle(IteratorIterator|array $dataFromCsv): void
+    public function handle(IteratorIterator|array $data): void
     {
         $user = User::first();
-        foreach ($dataFromCsv as $item) {
+        foreach ($data as $item) {
             $tags = $this->getTags($item);
 
             $blocks = $this->makeBlocks($item);

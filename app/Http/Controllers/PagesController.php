@@ -13,7 +13,6 @@ class PagesController extends Controller
         $pages = Page::search($search)
             ->latest()
             ->paginate(10);
-
         return inertia('Page/Index', [
             'pages' => PagesResource::collection($pages),
             'title' => 'Posts',

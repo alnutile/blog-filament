@@ -70,7 +70,7 @@ const searchIt = () => {
                     <section class="">
                         <div class="gap-8 py-8 px-4 mx-auto max-w-screen-xl xl:gap-16 md:grid md:grid-cols-12 sm:py-16 lg:px-6">
                             <div class="w-full h-[300px] col-span-4" v-if="index % 2 === 0">
-                                <img class="w-full h-full object-contain" :src="page.image" alt="dashboard image">
+                                <img class="w-full h-full object-cover" :src="page.image" alt="dashboard image">
                             </div>
                             <div class="mt-4 md:mt-0 mx-auto h-full w-full relative  col-span-8">
                                 <div class="flex justify-between mx-auto items-center mb-4 ">
@@ -89,7 +89,7 @@ const searchIt = () => {
                                 </Link>
                             </div>
                             <div class="w-full h-[300px] col-span-4" v-if="index % 2 !== 0">
-                                <img class="w-full h-full object-contain" :src="page.image" alt="dashboard image">
+                                <img class="w-full h-full object-cover" :src="page.image" alt="dashboard image">
                             </div>
                         </div>
                     </section>
