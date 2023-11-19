@@ -23,7 +23,7 @@
             </div>
         </Transition>
         <div class="absolute inset-x-0 bottom-12 sm:bottom-24 h-24 w-24 sm:w-60 sm:h-60 flex mx-auto min-w-max">
-            <img alt="alfred" class="border border-4 border-white  rounded rounded-full w-full h-full object-cover" src="/images/me_2023.png"/>
+            <img alt="alfred" class="border border-4 border-white rounded rounded-full h-24 w-24 sm:h-56 sm:w-56 object-cover" src="/images/me_2023.png"/>
         </div>
         <div class="absolute bottom-0 right-10 hidden sm:flex sm:justify-end mt-2">
             <a href="https://github.com/alnutile" target="_blank"
