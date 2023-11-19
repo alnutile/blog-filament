@@ -1,9 +1,7 @@
 <?php
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Route;
-
 use Facades\App\Screens\Welcome\GithubContributions;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,7 +14,7 @@ use Facades\App\Screens\Welcome\GithubContributions;
 |
 */
 
-Route::get("/github_contribs", function() {
+Route::get('/github_contribs', function () {
     $contributions = GithubContributions::handle();
 
     return response(['github_results' => $contributions]);

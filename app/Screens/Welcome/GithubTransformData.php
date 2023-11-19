@@ -2,8 +2,6 @@
 
 namespace App\Screens\Welcome;
 
-use YlsIdeas\FeatureFlags\Facades\Features;
-
 class GithubTransformData
 {
     public function handle(array $data): ContributionResponseDto
@@ -29,7 +27,6 @@ class GithubTransformData
                 $daysList[] = $day;
             }
         }
-
 
         return new ContributionResponseDto(
             [

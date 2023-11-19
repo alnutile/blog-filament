@@ -27,8 +27,8 @@ class StatamicImportFromMarkdownCommand extends Command
      */
     public function handle()
     {
-        $this->info("Getting Files");
-        $this->withProgressBar(File::allFiles(storage_path('statamic')), function($file) {
+        $this->info('Getting Files');
+        $this->withProgressBar(File::allFiles(storage_path('statamic')), function ($file) {
             StatamicMarkdownImporter::handle([$file->getContents()]);
         });
     }

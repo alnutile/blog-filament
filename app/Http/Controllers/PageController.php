@@ -15,7 +15,6 @@ class PageController extends Controller
             abort(404);
         }
 
-
         return inertia('Page/Show', [
             'id' => $page->id,
             'page' => RenderContent::handle($page),

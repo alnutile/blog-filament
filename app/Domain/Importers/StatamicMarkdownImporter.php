@@ -9,8 +9,8 @@ use IteratorIterator;
 
 class StatamicMarkdownImporter extends StatamicImporter
 {
-
     protected string $content;
+
     protected ContentDto $contentDto;
 
     public function handle(IteratorIterator|array $data): void
@@ -18,16 +18,16 @@ class StatamicMarkdownImporter extends StatamicImporter
         $user = User::firstOrFail();
         foreach ($data as $item) {
             $this->contentDto = ContentDto::from([]);
-            $exploded = explode("---", $item);
-            $content = collect($exploded)->filter(function($item) {
-                return !empty($item);
+            $exploded = explode('---', $item);
+            $content = collect($exploded)->filter(function ($item) {
+                return ! empty($item);
             })->values();
-            $this->content = data_get($content, 1, "");
+            $this->content = data_get($content, 1, '');
             $header = Arr::first($content);
             $this->getContentDto($header);
             $this->getTagsFromHeader($header);
             $this->makeBlocksFromContent();
-            if (! empty($this->contentDto->title) && !empty($this->contentDto->slug)) {
+            if (! empty($this->contentDto->title) && ! empty($this->contentDto->slug)) {
                 $page = Page::updateOrCreate([
                     'external_id' => $this->contentDto->externalId,
                 ], [
@@ -46,57 +46,61 @@ class StatamicMarkdownImporter extends StatamicImporter
         }
     }
 
-    protected function getTagsFromHeader(string $content) : void {
+    protected function getTagsFromHeader(string $content): void
+    {
         $allTags = collect(explode("\n", $content))
-            ->filter(function($item) {
-                return !empty($item);
+            ->filter(function ($item) {
+                return ! empty($item);
             })
-            ->transform(function($item) {
-                $exploded = explode(":", $item);
+            ->transform(function ($item) {
+                $exploded = explode(':', $item);
                 $key = Arr::first($exploded);
                 $value = Arr::last($exploded);
+
                 return [
                     'key' => $key,
-                    'value' => $value
+                    'value' => $value,
                 ];
-            })->filter(function($item) {
+            })->filter(function ($item) {
 
                 return str($item['value'])
                     ->trim()
-                    ->startsWith("-");
-            })->transform(function($item) {
-                return str($item['value'])->after("-")->trim()->toString();
+                    ->startsWith('-');
+            })->transform(function ($item) {
+                return str($item['value'])->after('-')->trim()->toString();
             })
             ->values()
-            ->filter(function($item) {
-                return !empty($item);
+            ->filter(function ($item) {
+                return ! empty($item);
             })
             ->toArray();
         $this->contentDto->tags = $allTags;
     }
 
-    protected function getContentDto(string $content) : void {
+    protected function getContentDto(string $content): void
+    {
         collect(explode("\n", $content))
-            ->filter(function($item) {
-                return !empty($item);
+            ->filter(function ($item) {
+                return ! empty($item);
             })
-            ->transform(function($item) {
-                $exploded = explode(":", $item);
+            ->transform(function ($item) {
+                $exploded = explode(':', $item);
                 $key = Arr::first($exploded);
                 $value = Arr::last($exploded);
+
                 return [
                     'key' => $key,
-                    'value' => $value
+                    'value' => $value,
                 ];
-            })->filter(function($item) {
+            })->filter(function ($item) {
                 return in_array($item['key'], [
                     'id',
                     'title',
                     'updated_at',
-                    'hero_image'
+                    'hero_image',
                 ]);
             })->map(function ($item) {
-                if($item['key'] === 'id') {
+                if ($item['key'] === 'id') {
                     $this->contentDto->externalId = trim($item['value']);
                 } elseif ($item['key'] === 'title') {
                     $this->contentDto->setTitle($item['value']);
@@ -106,11 +110,13 @@ class StatamicMarkdownImporter extends StatamicImporter
                 } elseif ($item['key'] === 'hero_image') {
                     $this->contentDto->image = trim($item['value']);
                 }
+
                 return $item;
             });
     }
 
-    protected function makeBlocksFromContent() : void {
+    protected function makeBlocksFromContent(): void
+    {
         $blocks[] = [
             'type' => 'intro',
             'data' => [

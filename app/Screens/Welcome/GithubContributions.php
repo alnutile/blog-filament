@@ -6,7 +6,6 @@ use Carbon\Carbon;
 use Facades\App\Screens\Welcome\GithubTransformData;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
-use YlsIdeas\FeatureFlags\Facades\Features;
 
 class GithubContributions
 {
