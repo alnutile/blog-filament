@@ -27,6 +27,7 @@ class PagesResource extends JsonResource
             'title' => str($this->title)->limit(35)->toString(),
             'intro' => $pageIntro->intro,
             'image' => $pageIntro->image,
+            'date' => $this->created_at->diffForHumans(),
             'tags' => $this->tags,
         ];
     }

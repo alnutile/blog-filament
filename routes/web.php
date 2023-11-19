@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\PagesController;
+use App\Models\Page;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -25,9 +27,7 @@ Route::get('/posts', PagesController::class)->name('pages.index');
 
 Route::get('/{slug}', PageController::class)->name('frontend');
 
-Route::get('/', function () {
-    return Inertia::render('Home/Show');
-})->name('home');
+Route::get('/', HomeController::class)->name('home');
 
 Route::middleware([
     'auth:sanctum',

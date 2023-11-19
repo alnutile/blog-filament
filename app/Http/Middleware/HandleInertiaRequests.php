@@ -34,6 +34,7 @@ class HandleInertiaRequests extends Middleware
             ...parent::share($request),
             'app_url' => config('app.url'),
             'app_name' => config('app.name'),
+            'auth' => auth()->user(),
             'logo' => config('app.logo'),
             'ziggy' => fn () => [
                 ...(new Ziggy)->toArray(),

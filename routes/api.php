@@ -3,6 +3,8 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
+use Facades\App\Screens\Welcome\GithubContributions;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -14,6 +16,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::get("/github_contribs", function() {
+    $contributions = GithubContributions::handle();
+
+    return response(['github_results' => $contributions]);
+})->name('api.contribs');
