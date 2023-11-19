@@ -28,7 +28,7 @@ defineProps({
                     </h1>
                 </div>
 
-                <div class="mx-auto text-xl text-gray-500 py-10 prose">
+                <div class="mx-auto text-xl text-gray-500 py-10 prose px-5 sm:px-0">
                     I have been in the industry for 20+ years. My roots are in coding and a passion for technology (OpenAi, PHP, Laravel and more). For the past several years, I have been building and leading a team to create technologies to assist in the digital transformation in my current role.
 
                     Worked at Pfizer for 10 years building amazing products and working with an amazing team.

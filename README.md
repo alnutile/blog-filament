@@ -65,3 +65,11 @@ php artisan db:seed --class=PageSeeder
 php artisan scout:delete-index "App\Models\Page"
 php artisan scout:import "App\Models\Page"
 ```
+
+
+## Send up files
+
+```bash 
+~/Code/blog_filament/storage/app/public main
+❯ rsync -avz ./ sundance:/home/forge/alfrednutile.info/storage/app/public/
+```
