@@ -44,6 +44,7 @@ class PageResource extends Resource
                             return $slug;
                         }
                         ),
+                    Forms\Components\Toggle::make('published'),
                     TextInput::make('slug')
                         ->disabled()
                         ->required(),
