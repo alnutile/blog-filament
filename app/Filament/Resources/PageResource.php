@@ -46,7 +46,6 @@ class PageResource extends Resource
                         ),
                     Forms\Components\Toggle::make('published'),
                     TextInput::make('slug')
-                        ->disabled()
                         ->required(),
                     SpatieTagsInput::make('tags'),
                     Select::make('author_id')
