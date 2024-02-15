@@ -2,7 +2,7 @@
     <footer class="p-4 bg-white sm:p-6 dark:bg-gray-800">
         <div class="mx-auto max-w-screen-xl">
             <div class="sm:flex sm:items-center sm:justify-between">
-            <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2023 <a :href="$page.props.app_url"
+            <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2024 <a :href="$page.props.app_url"
                                                                                             class="hover:underline">Alfred Nutile™</a>. All Rights Reserved.
             </span>
                 <div class="flex mt-4 space-x-6 sm:justify-center sm:mt-0">
