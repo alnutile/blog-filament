@@ -18,6 +18,8 @@ use Inertia\Inertia;
 |
 */
 
+Route::feeds();
+
 Route::get('/about', function () {
     return Inertia::render('About/Show');
 })->name('about');

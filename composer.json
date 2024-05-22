@@ -22,6 +22,7 @@
         "league/csv": "^9.0",
         "spatie/data-transfer-object": "^3.9",
         "spatie/laravel-data": "^3.9",
+        "spatie/laravel-feed": "^4.4",
         "tightenco/ziggy": "^1.0"
     },
     "require-dev": {

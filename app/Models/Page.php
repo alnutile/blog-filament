@@ -11,6 +11,8 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Laravel\Scout\Searchable;
+use Spatie\Feed\Feedable;
+use Spatie\Feed\FeedItem;
 use Spatie\Tags\HasTags;
 
 /**
@@ -24,7 +26,7 @@ use Spatie\Tags\HasTags;
  * @property int $author_id
  * @property int $id
  */
-class Page extends Model
+class Page extends Model implements Feedable
 {
     use HasFactory;
     use HasTags;
@@ -75,5 +77,26 @@ class Page extends Model
     protected function makeAllSearchableUsing(Builder $query): Builder
     {
         return $query->with('tags');
+    }
+
+    public function toFeedItem(): FeedItem
+    {
+        return FeedItem::create()
+            ->id($this->id)
+            ->title($this->title)
+            ->summary('foobar')
+            ->updated($this->updated_at)
+            ->link(route(
+                'frontend', [
+                    'slug' => $this->slug,
+                ]
+            ))
+            ->authorName('Alfred Nutile')
+            ->authorEmail('alfrednutile@gmail.com');
+    }
+
+    public static function getFeedItems()
+    {
+        return Page::published()->get();
     }
 }
