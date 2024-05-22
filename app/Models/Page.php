@@ -85,7 +85,7 @@ class Page extends Model implements Feedable
         /** @var IntroDto $pageIntro */
         $pageIntro = RenderContent::getIntro($this);
         return FeedItem::create()
-            ->id($this->id)
+            ->id((string) $this->id)
             ->title($this->title)
             ->summary(str($pageIntro->intro)->stripTags())
             ->image($pageIntro->image)
