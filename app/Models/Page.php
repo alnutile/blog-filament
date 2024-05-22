@@ -97,6 +97,6 @@ class Page extends Model implements Feedable
 
     public static function getFeedItems()
     {
-        return Page::published()->get();
+        return Page::published()->latest()->get();
     }
 }
