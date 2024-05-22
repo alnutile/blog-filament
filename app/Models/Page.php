@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Domain\Render\IntroDto;
 use App\Events\PageUpdatedEvent;
 use Carbon\Carbon;
 use Facades\App\Domain\Render\RenderContent;
@@ -81,10 +82,13 @@ class Page extends Model implements Feedable
 
     public function toFeedItem(): FeedItem
     {
+        /** @var IntroDto $pageIntro */
+        $pageIntro = RenderContent::getIntro($this);
         return FeedItem::create()
             ->id($this->id)
             ->title($this->title)
-            ->summary('foobar')
+            ->summary(str($pageIntro->intro)->stripTags())
+            ->image($pageIntro->image)
             ->updated($this->updated_at)
             ->link(route(
                 'frontend', [
