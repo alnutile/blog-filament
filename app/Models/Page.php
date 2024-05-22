@@ -88,7 +88,7 @@ class Page extends Model implements Feedable
             ->id((string) $this->id)
             ->title($this->title)
             ->summary(str($pageIntro->intro)->stripTags())
-            ->image($pageIntro->image)
+            ->image(url('/storage/'.$pageIntro->image))
             ->updated($this->updated_at)
             ->link(route(
                 'frontend', [
